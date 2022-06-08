@@ -11,7 +11,7 @@ import javax.inject.Named
 
 @InstallIn(ActivityComponent::class)
 @Module
-class UserModule {
+object UserModule {
 
     @Provides
     @Named("RoomRepository")
