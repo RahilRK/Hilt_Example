@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.hilt_example.R
 import com.example.hilt_example.databinding.ActivityProductListBinding
 import com.example.hilt_example.network.ResponseHandler
@@ -17,7 +18,6 @@ class ProductList : AppCompatActivity() {
     val TAG = "ProductListActivity"
 
     lateinit var binding: ActivityProductListBinding
-    @Inject
     lateinit var viewModel: ProductListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +25,8 @@ class ProductList : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_product_list)
         binding.lifecycleOwner = this
         binding.executePendingBindings()
+
+        viewModel = ViewModelProvider(this).get(ProductListViewModel::class.java)
 
         setObserver()
     }
